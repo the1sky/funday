@@ -12,6 +12,7 @@ package com.rialive.fund.view{
 		
 		public override function onRegister():void{		
 			this.addViewListener( MouseEvent.CLICK, clickHandler ); 
+			
 			this.addContextListener( GetFundDataServiceFeedbackEvent.GET_ONE_SUCC, queryFundSuccHandler );
 			this.addContextListener( GetFundDataServiceFeedbackEvent.GET_ONE_FAIL, queryFundFailHandler );
 		}

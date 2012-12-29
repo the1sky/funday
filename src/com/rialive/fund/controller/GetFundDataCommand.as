@@ -1,5 +1,6 @@
 package com.rialive.fund.controller{
 	import com.rialive.fund.model.FundModel;
+	import com.rialive.fund.service.GetCloseFundDataService;
 	import com.rialive.fund.service.GetFundDataService;
 	import com.rialive.fund.service.events.GetFundDataServiceFeedbackEvent;
 	
@@ -13,7 +14,7 @@ package com.rialive.fund.controller{
 	 */	
 	public class GetFundDataCommand extends Command{
 		[Inject]
-		public var getFundDataService:GetFundDataService;
+		public var getCloseFundService:GetCloseFundDataService;
 		[Inject]
 		public var fundModel:FundModel;
 		
@@ -21,7 +22,7 @@ package com.rialive.fund.controller{
 			commandMap.detain( this );
 			this.eventDispatcher.addEventListener( GetFundDataServiceFeedbackEvent.GET_CLOSE_SUCC, getCloseSuccHandler );
 			this.eventDispatcher.addEventListener( GetFundDataServiceFeedbackEvent.GET_CLOSE_FAIL, getCloseFailHandler );
-			getFundDataService.start();
+			getCloseFundService.start();
 		}
 		
 		private function getCloseSuccHandler(e:GetFundDataServiceFeedbackEvent):void{			
